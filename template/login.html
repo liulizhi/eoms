@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Note there is no responsive meta tag here -->
+
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>用户登录</title>  
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/non-responsive.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <p class="lead">
+		<form class="form-horizontal" action="/auth/" method="post">
+		  {% csrf_token %}
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+		    <div class="col-sm-10">
+		      <input type="text" name='username' class="form-control" id="username" placeholder="zhangsan">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+		    <div class="col-sm-10">
+		      <input type="password" name='password' class="form-control" id="password" placeholder="Password">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox"> 记住密码10天
+		        </label>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  {% ifequal  login_err "deactive" %}
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+		    <div class="col-sm-10">
+		      <button type="button" class="btn btn-warning">登录失败，无效账号/账号未激活</button>
+		    </div>
+		  </div>
+		  {% endifequal %}
+		  {% ifequal  login_err "meserror" %}
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+		    <div class="col-sm-10">
+		      <button type="button" class="btn btn-danger">登录失败，请输入用户名或密码</button>
+		    </div>
+		  </div>
+		  {% endifequal %}
+		  
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">登录</button>
+		    </div>
+		  </div>
+		</form>
+      </div>
+      
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html> 

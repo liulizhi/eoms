@@ -1,0 +1,68 @@
+{% extends "base.html" %}  
+
+{% block title %}<title>列表页</title>{% endblock %}  
+
+
+      {% block content-page %}
+      
+      {% for bbs in bbs_all_list %}
+      
+      		<h4><a href="/bbs/bbsdetail/{{bbs.pk}}">{{bbs.title}}</a></h4>
+      		<br>
+      		作者：{{bbs.author}}
+      		
+      		<hr>
+      
+      {% endfor %}
+      
+		<nav>
+		  <ul class="pagination">
+			{% if bbs_all_list.has_previous %}
+	        <li>
+		        <a href='/bbs/?page={{ bbs_all_list.previous_page_number }}' aria-label="Previous">
+		        	<span>&lt;&lt;</span><span aria-hidden="true">&laquo;</span>
+		        </a>
+	        </li>
+			 {% endif %}
+			 {% for page in bbs_all_list.paginator.page_range_next %}
+			     {% if page = bbs_all_list.number %}
+			         <li>
+			         	<a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+			         </li>
+			     {% else %}
+			         <li>
+			         	<a class='paginator' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a>
+			         </li>
+			     {% endif %}
+			 {% endfor %}
+			 {% if bbs_all_list.has_next %}
+			     <li>
+				     <a title='NextPage' href='/bbs/?page={{ bbs_all_list.next_page_number }}' aria-label="Next">
+				     	<span>&gt;&gt;</span><span aria-hidden="true">&raquo;</span>
+				     </a>
+			     </li>
+			 {% endif %}
+		  </ul>
+		</nav>
+		 
+<!--  		<nav>
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav> -->
+      
+      {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}  
+
+{% block title %}<title>{{bbs_details.title}}</title>{% endblock %}  
+
+
+      {% block content-page %}
+      
+				  <tr>
+				    <th><font color=#ce0000><span style="font-weight:bold;">全文检索</span></font></th>
+				  </tr>
+				  
+		    <form action="/bbs/search_deal/" method="post">
+				<table class="table">
+					  <tr>
+						<div class="row head">
+						    <div class="col-lg-12">
+						        <div class="input-group">
+						            <input type="text" name="search" class="form-control" placeholder="全文检索(关键字/作者/标题等)">
+						            <span class="input-group-btn">
+						                <button class="btn btn-info" type="button" ><span class="glyphicon glyphicon-search"  style="width:80px;" >全文检索</span></button>
+						            </span>
+						        </div>
+						    </div>
+						</div>
+					</tr>
+				</table>
+			</form>
+
+      
+
+      
+      {% endblock %}

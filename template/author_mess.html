@@ -1,0 +1,34 @@
+{% extends "base.html" %}  
+
+{% block title %}<title>{{bbs_details.title}}</title>{% endblock %}  
+
+
+      {% block content-page %}
+      
+			<blockquote  class="blockquote-reverse">
+			  <p>大部分的天才都是通过使用血泪拼出来的!!!~</p>
+			  <footer>Sendal <cite title="《成功学》">《成功学》</cite></footer>
+			</blockquote>
+      
+			<address>
+			  <strong>Fang.com, Inc.</strong><br>
+			    北京市 朝阳区 <br>
+			    世纪东方城 北区 108/901<br>
+			  <abbr title="Phone">P:</abbr> (010) 186-0044-0842
+			</address>
+			
+			<address>
+			  <strong>Email</strong><br>
+			  <a href="mailto:schangech@gmail.com">schangech@gmail.com</a>
+			</address>
+
+      		<hr>
+      		
+			{% autoescape off %}
+      			{{bbs_details.content}}
+			{% endautoescape %}
+      		<hr>
+
+      
+      
+      {% endblock %}
