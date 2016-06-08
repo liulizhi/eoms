@@ -34,20 +34,22 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/bbs">小苏论坛</a>
+          <a class="navbar-brand" href="/">运维自动化平台</a>
         </div>
         <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
         <div id="navbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/assets/#asset">资产管理</a></li>
-            <li><a href="#config">配置管理</a></li>
-            <li><a href="#machine">装机管理</a></li>
+            <li><a href="/#config">配置管理</a></li>
+            <li><a href="/#machine">装机管理</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#monitor">监控展示</a></li>
-                <li><a href="#version">版本发布</a></li>
-                <li><a href="#">安全退出</a></li>
+                <li><a href="/monitor/#monitor">监控展示</a></li>
+                <li><a href="/#version">版本发布</a></li>
+                <li><a href="/bbs/#blog">博客管理</a></li>
+                <li><a href="/admin/#admin">后台管理</a></li>
+                <li><a href="/#">安全退出</a></li>
                 <li role="separator" class="divider"></li>
               </ul>
             </li>
@@ -94,6 +96,9 @@
       </div>
       
 	  {% endblock %}
+      <footer>
+        <p>© Company 2016</p>
+      </footer>
     </div> <!-- /container -->
 
 

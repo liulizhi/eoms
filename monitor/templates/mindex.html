@@ -1,0 +1,139 @@
+{% extends "base.html" %}  
+
+{% block title %}<title>数据表显示</title>{% endblock %}  
+
+    {% block staticcss %} 
+    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Monthly Average Temperature',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C) data : [{% for k,v in data01.items %} {{ k }},  {% endfor %}]'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [
+                 
+				{% for k,v in data01.items %} 
+				
+				{ 
+				    name: '{{k}}',
+				    data:  {{v}} 
+				},  
+				
+				{% endfor %}
+                 
+                 
+/* { 
+	name: 'qi', 
+	data: [23, 24, 5, 21, 38, 6, 8, 20, 25, 9, 8, 29] 
+	}, 
+	{ 
+	name: 'suqirui', 
+	data: [23, 23, 45, 8, 4, 7, 24, 8, 24, 24, 26, 15] 
+	}, { 
+	name: 'rui', 
+	data: [23, 23, 45, 2, 4, 5, 8, 9, 24, 4, 28, 9] 
+	}, 
+	{ 
+	name: 'su', 
+	data: [23, 23, 45, 2, 4, 5, 8, 9, 24, 6, 28, 19] 
+	}, */
+
+
+
+                 ]
+    });
+});
+
+
+		</script>
+	{% endblock %} 
+
+	{% block content-page %}
+	
+
+
+	
+ <div class="row-fluid sortable">
+
+        <div class="box span6">
+                    <div class="box-header well" data-original-title>
+                        <h2><i class="icon-star"></i><i class="icon-star"></i> 日报警统计<i class="icon-star"></i><i class="icon-star"></i></h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+
+                       	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                    </div>
+        </div><!--/span-->
+
+        <div class="box span6">
+                    <div class="box-header well" data-original-title>
+                        <h2><i class="icon-star"></i><i class="icon-star"></i> 月报警统计<i class="icon-star"></i><i class="icon-star"></i></h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        	{% include 'mindex1.html' %}
+                    </div>
+        </div><!--/span-->
+        
+        <div class="box span6">
+                    <div class="box-header well" data-original-title>
+                        <h2><i class="icon-star"></i><i class="icon-star"></i> 饼状图统计<i class="icon-star"></i><i class="icon-star"></i></h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        	{% include 'mindexpie.html' %}
+                    </div>
+        </div><!--/span-->
+        
+        
+        
+
+    </div>	
+	{% endblock %}
+      
+    {% block staticjs %} 
+	<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+	<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    {% endblock %}

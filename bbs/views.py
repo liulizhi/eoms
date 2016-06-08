@@ -39,7 +39,7 @@ def authen(request):
                 if user.is_active:
                     login(request, user)
                     request.session['user'] = uname
-                    response = HttpResponseRedirect('/bbs/')
+                    response = HttpResponseRedirect('/')
                     response.set_cookie('username',uname,3600)
                     return response
                 else:
@@ -82,7 +82,7 @@ def author(request, template_name):
                               )
 
 @login_required(login_url="/login/")
-def dashboard(request):
+def index(request):
     bbs_list = Bbs.objects.all()
     page = request.GET.get('page')
     #paginator = Paginator(bbs_list, 2)
@@ -109,7 +109,8 @@ def bbs_detail(request, bid):
 def add_blog(request, template_name):
     author_list = BBS_user.objects.all()
     return render_to_response(template_name, 
-                              {"author_list": author_list}
+                              {"author_list": author_list,
+                               'user': request.user}
                               )  
 
 def add_blog_pro(request):
@@ -127,18 +128,10 @@ def add_blog_pro(request):
         author = blogauthor,
         content = content,
     )
-    body = '''
-    <html>
-    <title>successfully</title>
-    <body>
-    Congratulation ~~! add successfully!!
-    <br>
-    <a href="/bbs/">back to dashboard</a>
-    </body>
-    </html>
-    '''
-    
-    return HttpResponse(body)
+    response = HttpResponseRedirect('/bbs/', 
+                                    {'user': request.user}
+                                    )
+    return response
 
 def delete_blog(request, bid):
     blog = Bbs.objects.get(pk=bid)
@@ -148,7 +141,8 @@ def delete_blog(request, bid):
 def manage_blog_list(request):
     bbs_list = Bbs.objects.all()
     return render_to_response('manage_bbs_list.html', 
-                              {'bbs_list': bbs_list}
+                              {'bbs_list': bbs_list,
+                               'user': request.user}
                               )
     
 def search(request, template_name):
@@ -160,7 +154,13 @@ def search_deal(request, *args, **kwargs ):
     print args
     print kwargs
     print search_content
-    return HttpResponseRedirect("/bbs/")
+    return HttpResponseRedirect("/bbs/", 
+                                {'user': request.user })
+
+def dashboard(request, template_name):
+    return render_to_response(template_name,
+                              {'user': request.user}
+                              )
 
     
 

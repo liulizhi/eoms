@@ -54,20 +54,36 @@
 		  </div>
 		  
 		  {% ifequal  login_err "deactive" %}
-		  <div class="form-group">
+<!-- 		  <div class="form-group">
 		    <label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    <div class="col-sm-10">
 		      <button type="button" class="btn btn-warning">登录失败，无效账号/账号未激活</button>
 		    </div>
-		  </div>
+		  </div> -->
+			<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+			      <div class="alert alert-danger" role="alert">
+			        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+			      </div>
+			    </div>
+			</div>
 		  {% endifequal %}
 		  {% ifequal  login_err "meserror" %}
-		  <div class="form-group">
+<!-- 		  <div class="form-group">
 		    <label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    <div class="col-sm-10">
 		      <button type="button" class="btn btn-danger">登录失败，请输入用户名或密码</button>
 		    </div>
-		  </div>
+		  </div> -->
+			<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+			      <div class="alert alert-warning" role="alert">
+			        <strong>Warning!</strong>  check the username/password.
+			      </div>
+			    </div>
+			</div>
 		  {% endifequal %}
 		  
 		  <div class="form-group">

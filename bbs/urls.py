@@ -3,11 +3,7 @@ from django.conf.urls import patterns
 import views
 
 urlpatterns = patterns('bbs.views',
-    # Examples:
-    # url(r'^$', 'BBS_Pro.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    (r'^$', 'dashboard'),
+    (r'^$', 'index'),
     (r'bbsdetail/(?P<bid>\d+)/$', 'bbs_detail'),
     (r'add_blog/$', 'add_blog', {"template_name": "add_blog.html"}),
     (r'add_blog_pro/$', 'add_blog_pro'),

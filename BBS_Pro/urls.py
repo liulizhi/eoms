@@ -3,13 +3,29 @@ from django.contrib import admin
 
 import bbs.urls
 import assets.urls
+import monitor.urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^bbs/', include(bbs.urls)),
-    url(r'^assets/', include(assets.urls)),
+    url(r'^$', 'bbs.views.dashboard', {"template_name": "dashboard.html"}),
 ]
+
+# bbs message
+urlpatterns += [
+    url(r'^bbs/', include(bbs.urls)),
+]
+
+# assets message
+urlpatterns += [
+    url(r'^assets/$', include(assets.urls)),
+]
+
+# monitor message
+urlpatterns += [
+    url(r'^monitor/$', include(monitor.urls)),
+]
+
 
 # author message
 urlpatterns += [
