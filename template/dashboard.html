@@ -13,7 +13,7 @@
    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
+        <h1>Hi ! {{user}}</h1>
         <p>{{ perms.bbs }} # {{ perms.bbs.can_vote }} This is a template for a simple marketing or informational 
 website. </p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
@@ -24,28 +24,19 @@ website. </p>
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce 
-dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
-fermentum massa justo sit amet risus. Etiam porta sem malesuada magna 
-mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          <h2>添加博客</h2>
+          <p>添加博客 </p>
+          <p><a class="btn btn-default" href="/bbs/add_blog/" role="button">View details »</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce 
-dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
-fermentum massa justo sit amet risus. Etiam porta sem malesuada magna 
-mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          <h2>管理博客</h2>
+          <p>管理博客 </p>
+          <p><a class="btn btn-default" href="/bbs/manage_blog_list/" role="button">View details »</a></p>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis 
-in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. 
-Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
- ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          <h2>博客检索</h2>
+          <p>博客检索</p>
+          <p><a class="btn btn-default" href="/bbs/search/" role="button">View details »</a></p>
         </div>
       </div>
 

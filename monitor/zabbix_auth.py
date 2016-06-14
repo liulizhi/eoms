@@ -12,7 +12,7 @@ from urllib2 import URLError
 class Zabbix_Auth:
     
     def __init__(self):
-        self.url = 'http://zabbixapi'
+        self.url = 'http://zabbix.light.fang.com/api_jsonrpc.php'
         self.header = {"Content-Type":"application/json"}
 
 
@@ -21,8 +21,8 @@ class Zabbix_Auth:
                            "jsonrpc": "2.0",
                            "method": "user.authenticate",
                            "params": {
-                                      "user": "test",
-                                      "password": "test"
+                                      "user": "admin",
+                                      "password": "SouFun.ComZabbix"
                                       },
                            "id": 0
                            })

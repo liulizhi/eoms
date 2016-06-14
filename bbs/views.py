@@ -147,7 +147,9 @@ def manage_blog_list(request):
     
 def search(request, template_name):
 
-    return render_to_response(template_name)
+    return render_to_response(template_name, 
+                              {'user': request.user,}
+                              )
 
 def search_deal(request, *args, **kwargs ):
     search_content = request.POST.get("search")

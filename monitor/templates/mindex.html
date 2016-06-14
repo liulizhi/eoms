@@ -24,7 +24,7 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C) data : [{% for k,v in data01.items %} {{ k }},  {% endfor %}]'
+                text: 'Temperature (°C) '
             },
             plotLines: [{
                 value: 0,
@@ -52,25 +52,6 @@ $(function () {
 				
 				{% endfor %}
                  
-                 
-/* { 
-	name: 'qi', 
-	data: [23, 24, 5, 21, 38, 6, 8, 20, 25, 9, 8, 29] 
-	}, 
-	{ 
-	name: 'suqirui', 
-	data: [23, 23, 45, 8, 4, 7, 24, 8, 24, 24, 26, 15] 
-	}, { 
-	name: 'rui', 
-	data: [23, 23, 45, 2, 4, 5, 8, 9, 24, 4, 28, 9] 
-	}, 
-	{ 
-	name: 'su', 
-	data: [23, 23, 45, 2, 4, 5, 8, 9, 24, 6, 28, 19] 
-	}, */
-
-
-
                  ]
     });
 });
