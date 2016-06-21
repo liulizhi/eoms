@@ -6,6 +6,7 @@ Created on 2016/6/14
 
 import os
 import time
+import shutil 
 
 def read_file(path):
     #读取文件，如果文件不存在，则提示 文件不存在，请检查
@@ -32,14 +33,22 @@ def backup_file(source_file, backup_dir):
             res = False
             return e
     if res:
-        bk_file = backup_dir + time.strftime('%Y%m%d%H%M')        
+        bk_file = backup_dir + os.sep + time.strftime('%Y%m%d%H%M')
+        targ_dir = bk_file + os.sep + source_file
+        shutil.copy(source_file, targ_dir)
+        check_backup = os.path.isfile(targ_dir)
+        return check_backup      
     
     
 
-def update_file():
+def update_file(source_file, targ):
     #更新、修改文件
     #  判断修改文件数是否在可接受范围内，超过范围，则提示超过范围，不允许操作
-    pass
+    if targ:
+        f = file(source_file, 'r')
+        for line in f.readlines():
+            pass
+    
 
 def rollback_file():
     #异常，则回滚，回滚之后，检查

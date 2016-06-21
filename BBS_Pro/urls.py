@@ -1,10 +1,10 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
-import bbs.urls
-import assets.urls
-import monitor.urls
-import configManage.urls
+#import bbs.urls
+#import assets.urls
+#import monitor.urls
+#import configManage.urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -14,22 +14,22 @@ urlpatterns = [
 
 # bbs message
 urlpatterns += [
-    url(r'^bbs/', include(bbs.urls)),
+    url(r'^bbs/', include('bbs.urls')),
 ]
 
 # config manage
 urlpatterns += [
-    url(r'^config/', include(configManage.urls)),
+    url(r'^config/', include('configManage.urls')),
 ]
 
 # assets message
 urlpatterns += [
-    url(r'^assets/$', include(assets.urls)),
+    url(r'^assets/', include('assets.urls', namespace='assets')),
 ]
 
 # monitor message
 urlpatterns += [
-    url(r'^monitor/$', include(monitor.urls)),
+    url(r'^monitor/', include('monitor.urls')),
 ]
 
 

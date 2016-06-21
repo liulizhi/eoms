@@ -1,0 +1,107 @@
+{% extends "base.html" %}  
+{% load static from staticfiles %}
+
+{% block title %}<title>添加主机</title>{% endblock %}  
+
+    {% block staticcss %} 
+	{% endblock %} 
+
+	{% block content-page %}
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+        
+        <form class="form-inline" role="form" action="/" method="POST">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> 添加主机 </h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+                            class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="control-group">
+                    <label class="control-label" for="select_room">机房</label>
+
+                    <div class="controls">
+                        <select id="select_room" name="room" data-rel="chosen">
+                            <option>北京机房--世纪互联</option>
+                            <option>北京机房--三元桥</option>
+                            <option>上海机房--CDN帝联</option>
+                            <option>杭州机房--阿里--云主机</option>
+                            <option>深圳机房--腾讯--云主机</option>
+                        </select>
+                    </div>
+                </div>
+                
+<!--                 <div class="control-group">
+                    <label class="control-label" for="selectError1">Multiple Select / Tags</label>
+
+                    <div class="controls">
+                        <select id="selectError1" multiple class="form-control" data-rel="chosen">
+                            <option>Option 1</option>
+                            <option selected>Option 2</option>
+                            <option>Option 3</option>
+                            <option>Option 4</option>
+                            <option>Option 5</option>
+                        </select>
+                    </div>
+                </div> -->
+                <div class="control-group">
+                    <label class="control-label" for="select_oper">类型</label>
+                    <div class="controls">
+                        <select data-placeholder="选择主机操作系统" id="select_oper" name="opersys" data-rel="chosen">
+                            <option value=""></option>
+                            <optgroup label="Linux">
+                                <option>CentOS6.5</option>
+                                <option>RedHat7</option>
+                                <option>CentOS6.5</option>
+                                <option>Ubuntu12_Server</option>
+                            </optgroup>
+                            <optgroup label="Windows">
+                                <option>Windows2003_x86</option>
+                                <option>Windows2008_x86</option>
+                                <option>Windows2012_x86</option>
+                                <option>Windows2000_x86</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option>Suse</option>
+                                <option>Debian</option>
+                                <option>IBM AIX</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                
+                {% for field in form %}
+                <div class="control-group">
+                    {{field.label_tag}}  {{field}}
+                    {{field.errors}}
+                    <br>
+                    <br>                
+                </div>
+                {% endfor %}
+                
+                <br>
+                <br>
+                <br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div><!--/row-->
+
+
+	{% endblock %}
+	<hr>
+
+    {% block staticjs %} 
+    {% endblock %}
