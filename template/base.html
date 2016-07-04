@@ -25,6 +25,8 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
     
+
+    
     <!-- The styles -->
     <link id="bs-css" href="{% static 'css/bootstrap-cerulean.min.css' %}" rel="stylesheet">
 
@@ -58,7 +60,7 @@
     
 
          <!-- theme selector starts -->
-<!--          <div class="btn-group pull-right theme-container animated tada">
+         <div class="btn-group pull-right theme-container animated tada">
              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                  <i class="glyphicon glyphicon-tint"></i><span
                      class="hidden-sm hidden-xs"> Change Theme / Skin</span>
@@ -75,7 +77,7 @@
                  <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
                  <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
              </ul>
-         </div> -->
+         </div>
          <!-- theme selector ends -->    
 
       <div class="container">
@@ -108,9 +110,9 @@
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left" role="search" action="{% url 'assets:search' %}" method='GET'>
             <div class="form-group">
-              <input class="form-control" placeholder="Search" type="text">
+              <input class="form-control" placeholder="Search" name="search" id="search" type="text">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
           </form>

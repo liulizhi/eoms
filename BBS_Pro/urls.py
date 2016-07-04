@@ -9,8 +9,10 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^$', 'bbs.views.dashboard', {"template_name": "dashboard.html"}),
 ]
+
 
 # bbs message
 urlpatterns += [
@@ -47,4 +49,5 @@ urlpatterns += [
     url(r'^setting/$', 'bbs.views.setting'),
     url(r'^account/$', 'bbs.views.account'),
 ]
+
 

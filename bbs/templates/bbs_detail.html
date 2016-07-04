@@ -1,6 +1,15 @@
 {% extends "base.html" %}  
 
 {% block title %}<title>{{bbs_details.title}}</title>{% endblock %}  
+    {% load static from staticfiles %}
+    {% block staticcss %} 
+	<!--开头这里的样式为默认的风格，可以根据自己的喜好更换风格-->
+	<!--我的高亮效果是zenburn-->
+	<link rel="stylesheet" href="{% static 'highlight/styles/default.css' %}">
+	<script src="{% static 'highlight/highlight.pack.js' %}"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+    {% endblock %}
+
 
 
       {% block content-page %}

@@ -25,7 +25,7 @@ class Host(models.Model):
     opersys = models.IntegerField(choices = OPERSYS_CHOICE,
                                   default=0)
     supporter = models.ForeignKey(BBS_user)
-    mroom = models.ForeignKey('Machine_Room')
+    mroom = models.ForeignKey(u'Machine_Room')
     adddate = models.DateTimeField(default = timezone.now)
     updatedate = models.DateTimeField(auto_now = True)
     

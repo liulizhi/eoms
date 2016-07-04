@@ -4,6 +4,8 @@ from django.db import models
 import django.utils.timezone as timezone
 
 from django.contrib.auth.models import User
+    
+from ckeditor.fields import RichTextField
 
 
     
@@ -35,6 +37,7 @@ class Bbs(models.Model):
     title = models.CharField(max_length=64)
     summary = models.TextField(default='Lazy, nothing')
     content = models.TextField()
+    content = RichTextField(u'文章正文')
     author = models.ForeignKey(BBS_user)
     view_count = models.IntegerField(default='0')
     ranking = models.IntegerField(default='0')

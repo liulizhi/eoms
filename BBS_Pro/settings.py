@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'assets',
     'monitor',
     'configManage',
+    'ckeditor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -145,4 +146,118 @@ STATICFILES_DIRS = (
 )
 
 
+## CKEDITOR
 
+CKEDITOR_UPLOAD_PATH = "upload_img"
+
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
+
+CKEDITOR_RESTRICT_BY_USER = True
+#CKEDITOR_IMAGE_BACKEND = 
+#CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_JQUERY_URL = '/statics/admin/js/jquery.min.js'
+
+#CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, 'uploads/')
+#
+#CKEDITOR_MEDIA_PREFIX = os.path.join(BASE_DIR, 'static/ckeditor')
+
+#CKEDITOR_UPLOAD_PREFIX = "http://localhost:8000/uploads" 
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': (
+            ['div','Source','-','Save','NewPage','Preview','-','Templates'], 
+            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'], 
+            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'], 
+            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'], 
+            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'], 
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], 
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'], 
+            ['Link','Unlink','Anchor'], 
+            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'], 
+            ['Styles','Format','Font','FontSize'], 
+            ['TextColor','BGColor','CodeSnippet'], 
+            ['Maximize','ShowBlocks','-','About', 'pbckcode'],
+        ),
+        'height': 500,
+        'width': 900,
+        "extraPlugins": "codesnippet",
+        "codeSnippet_languages": {'Python':'Python',
+                                  "Bash":"Bash",
+                                  "javascript": 'JavaScript',
+                                  "php": 'PHP'},
+        "codeSnippet_theme": "monokai_sublime",
+    },
+#    "codeSnippet_languages": {'Python': 'Python'},
+#    "codeSnippet_theme": "zenburn",
+#    'awesome_ckeditor': {
+#        'toolbar': 'Basic',
+#    },
+}
+
+
+####log
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
+        },
+    },
+    'filters': {
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+        },
+        'default': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR+'/logs/','all.log'),
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'request_handler': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR+'/logs/','script.log'), 
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },
+        'scprits_handler': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR+'/logs/','script.log'), 
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['default','console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'django.request': {
+            'handlers': ['request_handler'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'scripts': {
+            'handlers': ['scprits_handler'],
+            'level': 'INFO',
+            'propagate': False
+        },
+    }
+}
