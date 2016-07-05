@@ -1,0 +1,7 @@
+# This is an implicit value, here for clarity
+--index https://pypi.python.org/simple/
+
+Django==1.8
+requests
+pillow
+django-grappelli
