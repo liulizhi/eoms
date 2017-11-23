@@ -1,0 +1,91 @@
+{% extends "base.html" %}  
+
+{% block title %}<title>User</title>{% endblock %}  
+
+
+      {% block content-page %}
+
+            <!-- <form class="form-inline" role="form" action="/assets/add/" method="POST">
+            {% csrf_token %}
+             </form> -->
+		<div class="row">
+		    <div class="box col-md-12">
+		        <div class="box-inner">
+		            <div class="box-header well" data-original-title="">
+		                <h2><i class="glyphicon glyphicon-edit"></i> 用户信息录入 </h2>
+		
+		                <div class="box-icon">
+		                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+		                            class="glyphicon glyphicon-cog"></i></a>
+		                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+		                            class="glyphicon glyphicon-chevron-up"></i></a>
+		                    <a href="#" class="btn btn-close btn-round btn-default"><i
+		                            class="glyphicon glyphicon-remove"></i></a>
+		                </div>
+		            </div>
+		            <div class="box-content">
+		                <form role="form">
+		                    <div class="form-group">
+		                        <label for="exampleInputEmail1">Email address</label>
+		                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="exampleInputPassword1">Password</label>
+		                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="exampleInputFile">File input</label>
+		                        <input type="file" id="exampleInputFile">
+		
+		                        <p class="help-block">Example block-level help text here.</p>
+		                    </div>
+		                    <div class="checkbox">
+		                        <label>
+		                            <input type="checkbox"> Check me out
+		                        </label>
+		                    </div>
+		                    {% for field in form %}
+		                    <div class="form-group">
+                                {{field.label_tag}} label_tag
+                                {{field}} field
+                                {{ field.label_tag }} ---
+                                {{ field.label }} label
+                                {{ field.id_for_label }} id_for_label
+                                {{ field.value }} value
+                                {{ field.html_name }} html_name
+                                {{ field.help_text }} help_text
+                                {{ field.errors }} errors
+                                {{ field.is_hidden }} is_hidden
+                                {{ field.widget.input_type }} input_type
+
+                                {{ field.label_tag }}
+                                
+                                {% ifequal filed.html_name avatar %}
+                                    
+                                    <input type="file" id={{ field.id_for_label }}>
+                                    <p class="help-block">{{ field.help_text }}</p>
+                                {% endifequal %}
+                                
+                                {% ifequal filed.id_for_label 'id_is_superuser' %}
+                                    <input type="checkbox" id={{ field.id_for_label }}, name={{ field.label }}, checked="checked">
+                                
+                                {% else %}
+                                    <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder=> -->
+                                    <input type={{ field.html_name }} class="form-control" id={{ field.id_for_label }} placeholder={{ field.label }}>
+                                
+                                {% endifequal %}
+                            </div>
+                            {{field.errors}}
+                            {% endfor %}
+		                    <button type="submit" class="btn btn-default">Submit</button>
+		                </form>
+		
+		            </div>
+		        </div>
+		    </div>
+		    <!--/span-->
+		
+		</div><!--/row-->
+
+      
+      {% endblock %}

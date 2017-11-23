@@ -1,20 +1,19 @@
 {% extends "base.html" %}  
 
-{% block title %}<title>列表页</title>{% endblock %}  
+{% block title %}<title>博客列表页</title>{% endblock %}  
 
 
       {% block content-page %}
-      
+
       {% for bbs in bbs_all_list %}
-      
-      		<h4><a href="/bbs/bbsdetail/{{bbs.pk}}">{{bbs.title}}</a></h4>
+
+      		<h4><a href="/bbs/{{bbs.pk}}/detail/">{{bbs.title}}</a></h4>
       		<br>
-      		作者：{{bbs.author}}   &nbsp;&nbsp;&nbsp;&nbsp;  发布时间:{{bbs.create_date|date:"F j, Y"}}  
-      		
+      		<a href="#">{{bbs.author}}</a>   &nbsp;&nbsp;&nbsp;&nbsp;  发布日期:{{bbs.create_date|date:"F j, Y"}}
       		<hr>
       
       {% endfor %}
-      
+
 		<nav>
 		  <ul class="pagination">
 			{% if bbs_all_list.has_previous %}
@@ -27,7 +26,7 @@
 			 {% for page in bbs_all_list.paginator.page_range_next %}
 			     {% if page = bbs_all_list.number %}
 			         <li>
-			         	<a class='paginator_current' title='当前页:{{ page }}'><span>{{ page }}</span></a>
+			         	<a class='paginator_current' title='褰撳墠椤�:{{ page }}'><span>{{ page }}</span></a>
 			         </li>
 			     {% else %}
 			         <li>

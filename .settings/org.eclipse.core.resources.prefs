@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//BBS_Pro/settings.py=utf-8
+encoding//bbs/models.py=utf-8
+encoding//bbs/templates/bbs_detail.html=UTF-8
+encoding//myauth/admin.py=utf-8
+encoding//myauth/forms.py=utf-8
+encoding//myauth/models.py=utf-8
+encoding//myauth/templates/list.html=UTF-8
+encoding//myauth/urls.py=utf-8
+encoding//myauth/views.py=utf-8

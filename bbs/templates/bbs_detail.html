@@ -3,8 +3,7 @@
 {% block title %}<title>{{bbs_details.title}}</title>{% endblock %}  
     {% load static from staticfiles %}
     {% block staticcss %} 
-	<!--开头这里的样式为默认的风格，可以根据自己的喜好更换风格-->
-	<!--我的高亮效果是zenburn-->
+
 	<link rel="stylesheet" href="{% static 'highlight/styles/default.css' %}">
 	<script src="{% static 'highlight/highlight.pack.js' %}"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
@@ -16,7 +15,7 @@
       
       		<h4><a href="#">{{bbs_details.title}}</a></h4>
       		<br>
-      		作者：{{bbs_details.author}} &nbsp; 查看次数：{{bbs_details.view_count}} &nbsp;发布时间:{{bbs_details.create_date| date:"F j, Y"}}
+      		作者:<a href="#">{{bbs_details.author}}</a> &nbsp; 浏览次数:{{bbs_details.view_count}} &nbsp;创建时间:{{bbs_details.create_date| date:"F j, Y"}}
       		
       		<hr>
       		

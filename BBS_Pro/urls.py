@@ -1,5 +1,7 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
+
+from django.conf import settings
 
 #import bbs.urls
 #import assets.urls
@@ -35,6 +37,10 @@ urlpatterns += [
 ]
 
 
+urlpatterns += [
+    url(r'^auth/', include('myauth.urls', namespace='auth')),
+]
+
 # author message
 urlpatterns += [
     url(r'^author/$', 'bbs.views.author', {"template_name": "author_mess.html"}),
@@ -51,3 +57,7 @@ urlpatterns += [
 ]
 
 
+if settings.DEBUG:  
+    urlpatterns += patterns('',  
+            (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),  
+            )

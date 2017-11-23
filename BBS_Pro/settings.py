@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Django settings for BBS_Pro project.
 
@@ -12,6 +14,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib import messages
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,7 +35,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli',
+    # 'grappelli',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,10 +45,19 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bbs',
     'assets',
+    'myauth',
     'monitor',
     'configManage',
-    'ckeditor'
+    'ckeditor',
+    #
+    # 'crispy_forms',
+    # 'imagekit',
 )
+
+# 使用bootstrap3的样式，前端需要引入相应的css
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,6 +90,12 @@ TEMPLATES = [
         },
     },
 ]
+
+MESSAGE_TAGS = {
+            messages.SUCCESS: 'alert-success success',
+            messages.WARNING: 'alert-warning warning',
+            messages.ERROR: 'alert-danger error'
+}
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',

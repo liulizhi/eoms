@@ -98,14 +98,40 @@ def index(request):
                                'user': request.user}
                               )
     
-@login_required(login_url="/login/") 
+@login_required(login_url="/login/")
 def bbs_detail(request, bid):
     bbs_details = Bbs.objects.get(pk=bid)
     return render_to_response('bbs_detail.html',
                               {'bbs_details': bbs_details,
                                'user': request.user,}
                               )
-    
+
+
+@login_required(login_url="/login/")
+def bbs_edit(request, bid):
+    contents = Bbs.objects.get(pk=bid)
+    return render_to_response('edit.html',
+                              {'contents': contents,
+                               'user': request.user,}
+                              )
+
+
+@login_required(login_url="/login/")
+def update(request, bid):
+    title = request.POST.get("title")
+    author = request.POST.get("author")
+    user = User.objects.get(username=author)
+    blogauthor = BBS_user.objects.get(user=user)
+    content = request.POST.get("content")
+    Bbs.objects.filter(pk = bid).update(
+        title = title,
+        author = blogauthor,
+        content = content,
+    )
+    response = HttpResponseRedirect('/bbs/{}/details'.format(bid))
+    return response
+
+
 def add_blog(request, template_name):
     author_list = BBS_user.objects.all()
     return render_to_response(template_name, 
@@ -124,7 +150,6 @@ def add_blog_pro(request):
     bbs_blog = Bbs.objects.create(
         
         title = blog_title,
-        #summary = summary,
         author = blogauthor,
         content = content,
     )

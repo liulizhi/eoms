@@ -15,22 +15,19 @@
 		    <th>修改</th>
 		  </tr>
 		  {% for bbs in bbs_list %}
-
-			
-
 		  <tr>
 			<label class="checkbox-inline">
 			 	<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td> 
-			    <td><a href="/bbs/bbsdetail/{{bbs.id}}">{{bbs.title}}</a></td>
-			    <td>{{bbs.author}}</td>
+			    <td><a href="/bbs/{{bbs.id}}/details">{{bbs.title}}</a></td>
+			    <td><a href="#">{{bbs.author}}</a></td>
 			    <td>{{bbs.create_date| date:"F j, Y"}}</td>
-			    <td><a href="/bbs/delete_blog/{{bbs.pk}}">删除</a></td>
+			    <td><a href="/bbs/{{bbs.pk}}/delete">删除</a></td>
 			    <td><a href="#">修改</a></td>
 		    </label>
 		  </tr>
-		  
+
 		  {% endfor %}
-		  
+
 		</table>     
 
       {% endblock %}
